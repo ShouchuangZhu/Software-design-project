@@ -35,7 +35,7 @@ class AppNavbar extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink href="http://www.google.com">
-                                    PlaceHolder
+                                    Profile
                                 </NavLink>
                             </NavItem>
                         </Nav>
