@@ -1,21 +1,11 @@
-import React, {Component} from 'react';
-import { Container, ListGroup, ListGroupItem, Button, Input} from 'reactstrap';
-import { CSSTrasition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
+import React from 'react'
 
-class Quote extends Component {
-    render(){
-        return(
-            <Container>
-                
-                <Input type="text" placeholder="gallon" /><br />
-                
-                
-
-               
-            </Container>
-        )
-    }
+const Quote = () => {
+    return (
+        <div>
+            
+        </div>
+    )
 }
 
-export default Quote;
+export default Quote
