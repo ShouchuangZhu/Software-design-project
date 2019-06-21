@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link to ='/'>Fuel Quote</Link>
       </h1>
       <ul>
-        <li><Link to='/register'>Register</Link></li>
+        <li><Link to='/register'>Sign Up</Link></li>
         <li><Link to='/login'>Login</Link></li>
       </ul>
     </nav>
