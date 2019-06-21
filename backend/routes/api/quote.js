@@ -3,6 +3,6 @@ const router = express.Router();
 
 //Post
 
-router.get('/', (req, res)=>res.send('Posts route'));
+router.get('/', (req, res)=>res.send('Quotes route'));
 
 module.exports = router;
