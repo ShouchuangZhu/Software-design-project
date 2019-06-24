@@ -40,6 +40,10 @@ const QuoteSchema = new mongoose.Schema({
     totalAmountDue: {
         type: Number,
         required: true
+    },
+    dateNow: {
+        type: Date,
+        default: Date.now
     }
 })
 
