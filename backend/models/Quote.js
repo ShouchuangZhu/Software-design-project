@@ -9,6 +9,25 @@ const QuoteSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    deliveryAddress1: {
+        type: String,
+        required: true
+    },
+    deliveryAddress2: {
+        type: String,
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    zipcode: {
+        type: Number,
+        required: true
+    },
     date: {
         type: Date,
         required: true

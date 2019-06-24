@@ -24,6 +24,11 @@ router.get('/quote', auth, async (req, res)=>{
 router.post('/', [auth, [check('gallonRequested', 'gallonRequested is required').not().isEmpty(), 
                          check('date', 'date is required').not().isEmpty(),
                          check('price', 'price is required').not().isEmpty(),
+                         check('deliveryAddress1', 'Please enter delivery address').isLength({max: 100}).not().isEmpty(),
+                         check('deliveryAddress2', 'Please enter delivery address').isLength({max: 100}),
+                         check('city', 'city is required').isLength({max:100}).not().isEmpty(),
+                         check('zipcode', 'zipcode is required').isLength({min:5, max:9}).not().isEmpty(),
+                         check('state', 'state is required').isLength({min:2, max: 2}).not().isEmpty(),
                          check('totalAmountDue', 'totalAmountDue is required').not().isEmpty(),
                          ]
                  ],
@@ -36,6 +41,11 @@ router.post('/', [auth, [check('gallonRequested', 'gallonRequested is required')
         gallonRequested,
         date,
         price,
+        deliveryAddress1,
+        deliveryAddress2,
+        city,
+        zipcode,
+        state,
         totalAmountDue
     } = req.body;
 
@@ -45,6 +55,11 @@ router.post('/', [auth, [check('gallonRequested', 'gallonRequested is required')
     if (gallonRequested) quoteFields.gallonRequested = gallonRequested;
     if (date) quoteFields.date = date;
     if (price) quoteFields.price = price;
+    if (deliveryAddress1) quoteFields.deliveryAddress1 = deliveryAddress1;
+    if (deliveryAddress2) quoteFields.deliveryAddress2 = deliveryAddress2;
+    if (city) quoteFields.city = city;
+    if (zipcode) quoteFields.zipcode = zipcode;
+    if (state) quoteFields.state = state;
     if (totalAmountDue) quoteFields.totalAmountDue = totalAmountDue;
 
     try {
