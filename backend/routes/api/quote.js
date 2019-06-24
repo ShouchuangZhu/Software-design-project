@@ -21,15 +21,16 @@ router.get('/quote', auth, async (req, res)=>{
     }
 });
 
-router.post('/', [auth, [check('gallonRequested', 'gallonRequested is required').not().isEmpty(), 
-                         check('date', 'date is required').not().isEmpty(),
-                         check('price', 'price is required').not().isEmpty(),
-                         check('deliveryAddress1', 'Please enter delivery address').isLength({max: 100}).not().isEmpty(),
-                         check('deliveryAddress2', 'Please enter delivery address').isLength({max: 100}),
-                         check('city', 'city is required').isLength({max:100}).not().isEmpty(),
-                         check('zipcode', 'zipcode is required').isLength({min:5, max:9}).not().isEmpty(),
-                         check('state', 'state is required').isLength({min:2, max: 2}).not().isEmpty(),
-                         check('totalAmountDue', 'totalAmountDue is required').not().isEmpty(),
+router.post('/', [auth, 
+   [check('gallonRequested', 'gallonRequested is required').not().isEmpty(), 
+    check('date', 'date is required').not().isEmpty(),
+    check('price', 'price is required').not().isEmpty(),
+    check('deliveryAddress1', 'Please enter delivery address').isLength({max: 100}).not().isEmpty(),
+    check('deliveryAddress2', 'Please enter delivery address').isLength({max: 100}),
+    check('city', 'city is required').isLength({max:100}).not().isEmpty(),
+    check('zipcode', 'zipcode is required').isLength({min:5, max:9}).not().isEmpty(),
+    check('state', 'state is required').isLength({min:2, max: 2}).not().isEmpty(),
+    check('totalAmountDue', 'totalAmountDue is required').not().isEmpty(),
                          ]
                  ],
     async (req, res) => {
@@ -64,11 +65,12 @@ router.post('/', [auth, [check('gallonRequested', 'gallonRequested is required')
 
     try {
         let quote = await Quote.findOne({ user: req.user.id });
-        //Update
-        if(quote){
-            quote = await Quote.findOneAndUpdate({ user: req.user.id }, { $set: quoteFields }, { new: true});
-            return res.json(quote);
-        };
+        //Insert
+        // if(quote){
+        //     quote = await Quote.findOneAndUpdate({ user: req.user.id }, { $set: quoteFields }, { new: true});
+        //     return res.json(quote);
+        // };
+       
         
 
         //Create

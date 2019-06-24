@@ -5,25 +5,26 @@ const QuoteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    
     gallonRequested: {
-        type: Number,
+        type: String,
         required: true
     },
     deliveryAddress1: {
         type: String,
         required: true
     },
-    deliveryAddress2: {
+    deliveryAddress2: [{
         type: String,
-    },
+    }],
     city: {
         type: String,
         required: true
     },
-    state: {
+    state: [{
         type: String,
         required: true
-    },
+    }],
     zipcode: {
         type: Number,
         required: true
