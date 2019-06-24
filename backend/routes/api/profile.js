@@ -25,10 +25,11 @@ router.get('/me', auth, async (req, res)=>{
 //Update user profile
 //secured
 
-router.post('/', [auth, [check('address1', 'Address is required').not().isEmpty(), 
-                         check('city', 'city is required').not().isEmpty(),
+router.post('/', [auth, [check('address1', 'Address is required').isLength({max: 100}).not().isEmpty(), 
+                         check('city', 'city is required').isLength({max:100}).not().isEmpty(),
                          check('zipcode', 'zipcode is required').isLength({min:5, max:9}).not().isEmpty(),
-                         check('state', 'state is required').isLength({min:2, max: 2}).not().isEmpty()]
+                         check('state', 'state is required').isLength({min:2, max: 2}).not().isEmpty(),
+                         check('fullname', 'Name is required').isLength({max:50}).not().isEmpty()]
                  ],
     async (req, res) => {
         const errors = validationResult(req);
