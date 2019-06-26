@@ -9,7 +9,7 @@ const DashboardAction = () => {
         <Link to='/quote' className="btn btn-light"
           ><i className="fab fa-black-tie text-primary"></i> Request a Quote</Link>
         <Link to='/history' className="btn btn-light"
-          ><i className="fab fa-black-tie text-primary"></i> Quote History</Link>
+          ><i className="fas fa-file-alt text-primary"></i> Quote History</Link>
         
       </div>
     )

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
+import { Link} from 'react-router-dom'
 import axios from "axios";
 
 export default function History() {
@@ -12,6 +13,10 @@ export default function History() {
 
   return (
     <Fragment>
+    <h1 className="large text-primary">Quote History</h1>
+    <p className="lead">
+      <i className="fas fa-file-alt"></i> Your Quote History!
+    </p>
     <ul>
         { data.map(item=>(
             <li key = {item.date}>
@@ -27,6 +32,7 @@ export default function History() {
             </li>
         )) };
     </ul>
+    <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
 </Fragment>
   );
 }
