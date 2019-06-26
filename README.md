@@ -9,4 +9,4 @@ npm install -D nodemon <br/>
 //frontend <br/>
 npm i bootstrap reactstrap uuid react-transition-group <br/>
 npm i axios react-router-dom react-redux redux-thunk redux-devtools-extension <br/>
-npm i moment react-moment favicon<br/>
+npm i moment react-moment favicon date-picker<br/>
