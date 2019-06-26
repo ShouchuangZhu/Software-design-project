@@ -49,18 +49,18 @@ const onSubmit = e => {
     
     return (
         <Fragment>
-    <h1 class="large text-primary">
+    <h1 className="large text-primary">
         Making a quote
       </h1>
-      <p class="lead">
-        <i class="fas fa-user"></i> Please fill in info!
+      <p className="lead">
+        <i className="fas fa-user"></i> Please fill in info!
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit = {e=> onSubmit(e)}>
         <div className="form-group">
           <input type="text" placeholder="*Gallon Requested" name="gallonRequested" value = {gallonRequested} onChange={(e)=> onChange(e)}/>
         </div>
-        <DatePicker selected = {date} onChange = { (date) => handleChange(date)}  />
+        <DatePicker selected = {date} onChange = { (date) => handleChange(date)} />
         
         <div className="form-group">
           <input type="text" placeholder="Delivery address" name="deliveryAddress1" value = {deliveryAddress1} onChange={(e)=> onChange(e)}/>
@@ -71,7 +71,7 @@ const onSubmit = e => {
         <div className="form-group">
           <input type="text" placeholder="*city" name="city" value = {city} onChange={(e)=> onChange(e)} />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <select name="state" value = {state} onChange={(e)=> onChange(e)}>
             <option value="ERROR">*state</option>
             <option value="AL">Alabama</option>

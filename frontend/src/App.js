@@ -11,6 +11,9 @@ import CreateProfile from './components/profile-form/CreateProfile';
 import EditProfile from './components/profile-form/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Quote from './components/quote/Quote';
+import History from './components/quote/History';
+
+
 import {Provider} from 'react-redux';
 import { loggedUser } from './action/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -39,6 +42,7 @@ const App = () => {
             <PrivateRoute exact path="/create-profile" component = {CreateProfile} />
             <PrivateRoute exact path="/edit-profile" component = {EditProfile} />
             <PrivateRoute exact path="/quote" component = {Quote} />
+            <PrivateRoute exact path="/history" component = {History} />
           </Switch>
         </section>
       </Fragment>
