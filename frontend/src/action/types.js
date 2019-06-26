@@ -15,3 +15,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const GET_QUOTE = 'GET_QUOTE';
 export const QUOTE_ERROR = 'QUOTE_ERROR';
 export const CLEAR_QUOTE = 'CLEAR_QUOTE';
+//quote history
+
+export const GET_HISTORY = 'GET_HISTORY';
+export const HISTORY_ERROR = 'HISTORY_ERROR';
