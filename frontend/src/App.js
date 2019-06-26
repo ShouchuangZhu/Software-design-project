@@ -11,13 +11,13 @@ import CreateProfile from './components/profile-form/CreateProfile';
 import EditProfile from './components/profile-form/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Quote from './components/quote/Quote';
-import History from './components/quote/History';
 
 
 import {Provider} from 'react-redux';
 import { loggedUser } from './action/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store';
+import History from './components/quote/History';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
