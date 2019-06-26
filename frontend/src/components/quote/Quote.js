@@ -3,12 +3,14 @@ import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createQuote } from '../../action/quote'
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css";
 
 const Quote = ({createQuote})=> {
 
     const [formData, setFormData] = useState({
         gallonRequested: '',
-        date: '',
+        date: new Date(),
         price: '',
         totalAmountDue: '',
         deliveryAddress1: '',
@@ -33,10 +35,17 @@ const Quote = ({createQuote})=> {
 
 const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
+const handleChange=(date)=> {
+  setFormData({...formData, date: date})
+}
+
+
+
 const onSubmit = e => {
     e.preventDefault();
     createQuote(formData);
-}
+};
+
     
     return (
         <Fragment>
@@ -51,9 +60,8 @@ const onSubmit = e => {
         <div className="form-group">
           <input type="text" placeholder="*Gallon Requested" name="gallonRequested" value = {gallonRequested} onChange={(e)=> onChange(e)}/>
         </div>
-        <div className="form-group">
-          <input type="text" placeholder="*Delivery date" name="date" value = {date} onChange={(e)=> onChange(e)} />
-        </div>
+        <DatePicker selected = {date} onChange = { (date) => handleChange(date)}  />
+        
         <div className="form-group">
           <input type="text" placeholder="Delivery address" name="deliveryAddress1" value = {deliveryAddress1} onChange={(e)=> onChange(e)}/>
         </div>
