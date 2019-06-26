@@ -14,17 +14,17 @@ const QuoteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    deliveryAddress2: [{
+    deliveryAddress2: {
         type: String,
-    }],
+    },
     city: {
         type: String,
         required: true
     },
-    state: [{
+    state: {
         type: String,
         required: true
-    }],
+    },
     zipcode: {
         type: Number,
         required: true
