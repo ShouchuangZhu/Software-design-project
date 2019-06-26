@@ -15,6 +15,7 @@ import {Provider} from 'react-redux';
 import { loggedUser } from './action/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store';
+import History from './components/quote/History';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -39,6 +40,7 @@ const App = () => {
             <PrivateRoute exact path="/create-profile" component = {CreateProfile} />
             <PrivateRoute exact path="/edit-profile" component = {EditProfile} />
             <PrivateRoute exact path="/quote" component = {Quote} />
+            <PrivateRoute exact path="/history" component = {History} />
           </Switch>
         </section>
       </Fragment>
