@@ -65,13 +65,6 @@ router.post('/', [auth,
 
     try {
         let quote = await Quote.findOne({ user: req.user.id });
-        //Insert
-        // if(quote){
-        //     quote = await Quote.findOneAndUpdate({ user: req.user.id }, { $set: quoteFields }, { new: true});
-        //     return res.json(quote);
-        // };
-       
-        
 
         //Create
         quote = new Quote(quoteFields);
@@ -87,9 +80,9 @@ router.post('/', [auth,
 });
 
 //get quote
-router.get('/', async (req, res)=>{
+router.get('/', auth, async (req, res)=>{
  try {
-    const quotes = await Quote.find().populate('user', ['name']);
+    const quotes = await Quote.find({user: req.user.id});
     res.json(quotes);
  } catch(err) {
     console.error(err.message);
