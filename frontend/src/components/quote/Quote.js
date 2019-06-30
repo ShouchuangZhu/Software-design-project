@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { createQuote } from '../../action/quote'
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css";
+import "./quote.css"
 
 const Quote = ({createQuote})=> {
 
@@ -49,13 +50,14 @@ const onSubmit = e => {
     
     return (
         <Fragment>
+          <section className="quote">
     <h1 className="large text-primary">
         Making a quote
       </h1>
       <p className="lead">
         <i className="fas fa-user"></i> Please fill in info!
       </p>
-      <small>* = required field</small>
+      <font color="red"> * </font><small>= required field</small>
       <form className="form" onSubmit = {e=> onSubmit(e)}>
         <div className="form-group">
           <input type="text" placeholder="*Gallon Requested" name="gallonRequested" value = {gallonRequested} onChange={(e)=> onChange(e)}/>
@@ -140,7 +142,8 @@ const onSubmit = e => {
         <input type="submit" className="btn btn-primary my-1" />
         <button className="btn btn-primary my-1">Get price</button>
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
-      </form>      
+      </form>
+      </section>      
     </Fragment>
     )
 }

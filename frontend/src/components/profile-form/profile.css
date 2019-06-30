@@ -1,0 +1,5 @@
+.profilecss {
+  position: relative;
+  background: url('../../img/profilebg.jpg') no-repeat center center/cover;
+  height: 100%;
+}
