@@ -1,0 +1,23 @@
+*Suggested Price = Current Price + Margin
+
+*Current Price = $1.5
+*Margin = Current * (Location - Rate History +Gallons Requested + Company Profit(10%) + Rate)
+
+Location:
+-Texas 2%
+-other 4%
+
+Rate History:
+-Yes 1%
+-No 0%
+
+Gallons Requested:
+->1000 2%
+-<1000 3%
+
+Company Profit
+-10%
+
+Rate:
+-Summer 4%
+-other 3%
