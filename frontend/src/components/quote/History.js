@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment, Component } from "react";
+import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
@@ -107,7 +107,7 @@ class History extends Component {
      
     ]
     return (
-      <ReactTable minRows = {10} columns = { columns }
+      <ReactTable  columns = { columns }
         data = {this.state.histories.data}
       >
       </ReactTable>
