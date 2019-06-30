@@ -1,45 +1,65 @@
-import React, {Component, Fragment}from 'react';
+import React, { useEffect, useState, Fragment } from "react";
+import axios from "axios";
 
-class History extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            items: [],
-            loading: false,
-        }
-    }
-    componentDidMount(){
-        fetch('/api/quote').then(res => res.json()).then(json => {
-            this.setState({
-                loading: true,
-                items: json,
-            })
-        })
-    }
-    render(){
-        var { loading, items } = this.state;
-        if(!loading){
-            return <div>Loading....</div>;
-        }
-        return(
-            <Fragment>
-                <ul>
-                    { items.map(item=>(
-                        <li key = {item.date}>
-                            {item.gallonRequested} 
-                            {item.date}
-                            {item.price}
-                            {item.deliveryAddress1}
-                            {item.deliveryAddress2}
-                            {item.city}
-                            {item.state}
-                            {item.zipcode}
-                            {item.totalAmountDue}
-                        </li>
-                    )) };
-                </ul>
-            </Fragment>
-            );
-    }
+function History() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("api/quote")
+      .then(result => setData(result.data));
+  }, []);
+
+  return (
+    <Fragment>
+    <ul>
+        { data.map(item=>(
+            <li key = {item.date}>
+                {item.gallonRequested} 
+                {item.date}
+                {item.price}
+                {item.deliveryAddress1}
+                {item.deliveryAddress2}
+                {item.city}
+                {item.state}
+                {item.zipcode}
+                {item.totalAmountDue}
+            </li>
+        )) };
+    </ul>
+</Fragment>
+  );
 }
 export default History;
+
+const columns = [
+    {
+      Header: "Gallon Requested",
+      accessor: "gallonRequested"
+    },
+    {
+      Header: "Date",
+      accessor: "date"
+    },
+    {
+      Header: "Price",
+      accessor: "price"
+    },
+    {
+      Header: "Address1",
+      accessor: "deliveryAddress1"
+    },
+    {
+      Header: "Address2",
+      accessor: "deliveryAddress2"
+    },
+    {
+      Header: "City",
+      accessor: "city"
+    },
+    {
+      Header: "State",
+      accessor: "state"
+    }
+   
+  ]

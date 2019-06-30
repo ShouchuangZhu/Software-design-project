@@ -3,7 +3,7 @@ import { GET_HISTORY, HISTORY_ERROR, } from "../action/types";
 const initialState = {
     history: null,
     histories: [],
-    loading: false,
+    loading: true,
     error: {}
 }
 
@@ -15,13 +15,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 history: payload,
-                loading: true
+                loading: false
             }
         case HISTORY_ERROR:
             return {
                 ...state,
                 error: payload,
-                loading: true
+                loading: false
             }
        
         default:
