@@ -79,7 +79,7 @@ router.post('/', [auth,
 
 });
 
-//get quote
+//get quote history
 router.get('/', auth, async (req, res)=>{
  try {
     const quotes = await Quote.find({user: req.user.id});
