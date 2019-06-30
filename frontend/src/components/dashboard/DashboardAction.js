@@ -10,7 +10,6 @@ const DashboardAction = () => {
           ><i className="fab fa-black-tie text-primary"></i> Request a Quote</Link>
         <Link to='/history' className="btn btn-light"
           ><i className="fab fa-black-tie text-primary"></i> Quote History</Link>
-        
       </div>
     )
 }

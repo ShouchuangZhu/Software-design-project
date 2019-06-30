@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createProfile } from '../../action/profile'
+import './profile.css'
 
 const CreateProfile = ({createProfile, history }) => {
     const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ const onSubmit = e => {
 
     return (
         <Fragment>
+          <section className="profilecss">
     <h1 class="large text-primary">
         Create Your Profile
       </h1>
@@ -114,7 +116,8 @@ const onSubmit = e => {
         
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
-      </form>      
+      </form>
+      </section>    
     </Fragment>
     )
 }
