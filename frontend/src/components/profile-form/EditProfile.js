@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createProfile, getCurrentProfile } from '../../action/profile'
+import './profile.css'
 
 const EditProfile = ({ profile: {profile, loading}, createProfile, getCurrentProfile, history }) => {
     const [formData, setFormData] = useState({
@@ -44,8 +45,9 @@ const onSubmit = e => {
 
     return (
         <Fragment>
+    <section className="profilecss">
     <h1 class="large text-primary">
-        Create Your Profile
+        Edit Your Profile
       </h1>
       <p class="lead">
         <i class="fas fa-user"></i> Please fill in your profile!
@@ -126,7 +128,8 @@ const onSubmit = e => {
         
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
-      </form>      
+      </form>
+      </section>      
     </Fragment>
     )
 }

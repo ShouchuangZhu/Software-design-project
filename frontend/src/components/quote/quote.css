@@ -1,0 +1,5 @@
+.quote {
+  position: relative;
+  background: url('../../img/mkquote.jpg') no-repeat center center/cover;
+  height: 100%;
+}
