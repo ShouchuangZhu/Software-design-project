@@ -136,10 +136,11 @@ const onSubmit = e => {
           <input type="text" placeholder="*Suggested price" name="price" value = {price} onChange={(e)=> onChange(e)} />
         </div>
         <div className="form-group">
-          <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = { totalAmountDue }  onChange={(e)=> onChange(e)}/>
+          <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue } onChange={(e)=> onChange(e)} />
         </div>
         
         <input type="submit" className="btn btn-primary my-1" />
+        <button className="btn btn-primary my-1">Get price</button>
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
       </section>      
