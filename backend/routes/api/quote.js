@@ -6,20 +6,6 @@ const { check, validationResult } = require('express-validator/check')
 const User = require('../../models/User');
 const Quote = require('../../models/Quote');
 
-router.get('/quote', auth, async (req, res)=>{
-    try {
-        const quote = await Quote.findOne({ user: req.user.id }).populate('user', ['name']);
-
-        if(!quote){
-            return res.status(400).json({msg: 'This user does not have a quote'});
-        }
-        res.json(quote);
-
-    } catch(err){
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 router.post('/', [auth, 
    [check('gallonRequested', 'gallonRequested is required').not().isEmpty(), 
