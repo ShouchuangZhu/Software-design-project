@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator/check')
 //Post
 const User = require('../../models/User');
 const Quote = require('../../models/Quote');
+const Pricing = require('../../models/Pricing')
 
 
 router.post('/', [auth, 
@@ -64,6 +65,9 @@ router.post('/', [auth,
     
 
 });
+
+
+
 
 //get quote history
 router.get('/', auth, async (req, res)=>{

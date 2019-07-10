@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createQuote } from '../../action/quote'
+import { createQuote, getPricing, askPricing } from '../../action/quote'
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css";
 import "./quote.css"
 
-const Quote = ({createQuote})=> {
+const Quote = ({createQuote, getPricing})=> {
 
     const [formData, setFormData] = useState({
         gallonRequested: '',
@@ -33,6 +33,8 @@ const Quote = ({createQuote})=> {
         zipcode,
 
     } = formData;
+
+    
 
 const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
@@ -139,7 +141,7 @@ const onSubmit = e => {
           <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue } onChange={(e)=> onChange(e)} />
         </div>
         
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary my-1"  />
         <button className="btn btn-primary my-1">Get price</button>
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
