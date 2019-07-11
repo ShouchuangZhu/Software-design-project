@@ -43,7 +43,7 @@ export const askPricing = (formData) =>  async dispatch => {
             type: GET_QUOTE,
             payload: res.data
         });
-        dispatch(setAlert('Quote Created'));
+        dispatch(setAlert('Quote Asked'));
     } catch (err){
         const errors = err.response.data.errors;
         if (errors){

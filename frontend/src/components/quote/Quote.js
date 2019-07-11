@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./quote.css"
 
-const Quote = ({createQuote, getPricing})=> {
+const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
 
     const [formData, setFormData] = useState({
         gallonRequested: '',
@@ -20,6 +20,18 @@ const Quote = ({createQuote, getPricing})=> {
         state: '',
         zipcode: '',
     });
+    useEffect(()=>{
+      getPricing();
+      setFormData({
+            address1: loading || !quote.address1 ? '' : quote.address1,
+            address2: loading || !quote.address2 ? '' : quote.address2,
+            city: loading || !quote.city ? '' : quote.city,
+            state: loading || !quote.state ? '' : quote.state,
+            zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
+            gallonRequested: loading || !quote.gallonRequested ? '': quote.gallonRequested,
+
+      })
+    }, [loading]);
 
     const {
         gallonRequested,
@@ -46,7 +58,8 @@ const handleChange=(date)=> {
 
 const onSubmit = e => {
     e.preventDefault();
-    createQuote(formData);
+    // createQuote(formData);
+    askPricing(formData);
 };
 
     
@@ -152,6 +165,13 @@ const onSubmit = e => {
 
 Quote.propTypes = {
     createQuote: PropTypes.func.isRequired,
-}
+    askPricing: PropTypes.func.isRequired,
+    getPricing: PropTypes.func.isRequired,
+    quote: PropTypes.object.isRequired,
 
-export default connect(null, {createQuote})(withRouter(Quote));
+}
+const mapStateToProps = state =>({
+  quote: state.quote
+})
+
+export default connect(mapStateToProps, {createQuote, askPricing, getPricing})(withRouter(Quote));

@@ -48,7 +48,7 @@ router.post('/', [auth,
         //Update
         if(pricing){
         
-            pricing = await Pricing.findOneAndUpdate({ user: req.user.id });
+            pricing = await Pricing.findOneAndUpdate({ user: req.user.id }, { $set: pricingFields }, { new: true});
             return res.json(pricing);
         };
         
