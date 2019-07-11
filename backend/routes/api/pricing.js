@@ -49,6 +49,7 @@ router.post('/', [auth,
         if(pricing){
         
             pricing = await Pricing.findOneAndUpdate({ user: req.user.id }, { $set: pricingFields }, { new: true});
+            
             return res.json(pricing);
         };
         
@@ -70,12 +71,10 @@ router.post('/', [auth,
  router.get('/', auth, async (req, res)=>{
     try {
         const pricing = await Pricing.findOne({ user: req.user.id });
-        pricing.price = 1.5;
-        pricing.totalAmountDue = pricing.gallonRequested * pricing.price;
         if(!pricing){
             return res.status(400).json({msg: 'This user does not have a pricing'});
         }
-        res.json([pricing.price, pricing.totalAmountDue]);
+        res.json(pricing);
 
     } catch(err){
         console.error(err.message);

@@ -23,13 +23,14 @@ const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
     useEffect(()=>{
       getPricing();
       setFormData({
-            address1: loading || !quote.address1 ? '' : quote.address1,
-            address2: loading || !quote.address2 ? '' : quote.address2,
+            deliveryAddress1: loading || !quote.deliveryAddress1 ? '' : quote.deliveryAddress1,
+            deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,
             city: loading || !quote.city ? '' : quote.city,
             state: loading || !quote.state ? '' : quote.state,
             zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
             gallonRequested: loading || !quote.gallonRequested ? '': quote.gallonRequested,
-
+            price: loading || !quote.price ? '': quote.price,
+            totalAmountDue: loading || !quote.totalAmountDue ? '': quote.totalAmountDue
       })
     }, [loading]);
 
@@ -58,8 +59,13 @@ const handleChange=(date)=> {
 
 const onSubmit = e => {
     e.preventDefault();
-    // createQuote(formData);
-    askPricing(formData);
+    if(!price){
+      askPricing(formData);
+    } else {
+      createQuote(formData);
+    }
+    // 
+    
 };
 
     
