@@ -39,4 +39,4 @@ const PricingSchema = new mongoose.Schema({
     }
 })
 
-module.exports = Quote = mongoose.model('pricing', PricingSchema)
+module.exports = Pricing = mongoose.model('pricing', PricingSchema)

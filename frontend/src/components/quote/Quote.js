@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createQuote } from '../../action/quote'
+import { createQuote, getPricing, askPricing } from '../../action/quote'
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css";
 import "./quote.css"
 
-const Quote = ({createQuote})=> {
+const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
 
     const [formData, setFormData] = useState({
         gallonRequested: '',
@@ -20,6 +20,19 @@ const Quote = ({createQuote})=> {
         state: '',
         zipcode: '',
     });
+    useEffect(()=>{
+      getPricing();
+      setFormData({
+            deliveryAddress1: loading || !quote.deliveryAddress1 ? '' : quote.deliveryAddress1,
+            deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,
+            city: loading || !quote.city ? '' : quote.city,
+            state: loading || !quote.state ? '' : quote.state,
+            zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
+            gallonRequested: loading || !quote.gallonRequested ? '': quote.gallonRequested,
+            price: loading || !quote.price ? '': quote.price,
+            totalAmountDue: loading || !quote.totalAmountDue ? '': quote.totalAmountDue
+      })
+    }, [loading]);
 
     const {
         gallonRequested,
@@ -34,6 +47,8 @@ const Quote = ({createQuote})=> {
 
     } = formData;
 
+    
+
 const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
 const handleChange=(date)=> {
@@ -44,7 +59,13 @@ const handleChange=(date)=> {
 
 const onSubmit = e => {
     e.preventDefault();
-    createQuote(formData);
+    if(!price){
+      askPricing(formData);
+    } else {
+      createQuote(formData);
+    }
+    // 
+    
 };
 
     
@@ -139,7 +160,7 @@ const onSubmit = e => {
           <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue } onChange={(e)=> onChange(e)} />
         </div>
         
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary my-1"  />
         <button className="btn btn-primary my-1">Get price</button>
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
@@ -150,6 +171,13 @@ const onSubmit = e => {
 
 Quote.propTypes = {
     createQuote: PropTypes.func.isRequired,
-}
+    askPricing: PropTypes.func.isRequired,
+    getPricing: PropTypes.func.isRequired,
+    quote: PropTypes.object.isRequired,
 
-export default connect(null, {createQuote})(withRouter(Quote));
+}
+const mapStateToProps = state =>({
+  quote: state.quote
+})
+
+export default connect(mapStateToProps, {createQuote, askPricing, getPricing})(withRouter(Quote));
