@@ -42,20 +42,22 @@ router.post('/', [auth,
      if (city) pricingFields.city = city;
      if (zipcode) pricingFields.zipcode = zipcode;
      if (state) pricingFields.state = state;
-     
+     pricingFields.price = 1.95;
+     pricingFields.totalAmountDue = 200;
+
      try {
         let pricing = await Pricing.findOne({ user: req.user.id });
-        //Update
-        if(pricing){
         
+        //Update
+        if(pricing){   
             pricing = await Pricing.findOneAndUpdate({ user: req.user.id }, { $set: pricingFields }, { new: true});
-            
             return res.json(pricing);
         };
         
         //Create
-    
+        
         pricing = new Pricing(pricingFields);
+        
         await pricing.save();
         res.json(pricing);
  

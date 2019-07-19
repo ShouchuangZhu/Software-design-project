@@ -33,6 +33,12 @@ const PricingSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    price: {
+        type: Number,
+    },
+    totalAmountDue: {
+        type: Number
+    },
     dateNow: {
         type: Date,
         default: Date.now

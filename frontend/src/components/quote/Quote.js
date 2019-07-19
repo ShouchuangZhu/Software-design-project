@@ -4,10 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createQuote, getPricing, askPricing } from '../../action/quote'
 import DatePicker from "react-datepicker"; 
+import Toggle from 'react-toggle';
 import "react-datepicker/dist/react-datepicker.css";
-import "./quote.css"
+import "./quote.css";
 
 const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
+
 
     const [formData, setFormData] = useState({
         gallonRequested: '',
@@ -19,19 +21,23 @@ const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
         city: '',
         state: '',
         zipcode: '',
+        check: false
     });
     useEffect(()=>{
       getPricing();
+      if(quote){
       setFormData({
-            deliveryAddress1: loading || !quote.deliveryAddress1 ? '' : quote.deliveryAddress1,
-            deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,
-            city: loading || !quote.city ? '' : quote.city,
-            state: loading || !quote.state ? '' : quote.state,
-            zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
-            gallonRequested: loading || !quote.gallonRequested ? '': quote.gallonRequested,
-            price: loading || !quote.price ? '': quote.price,
-            totalAmountDue: loading || !quote.totalAmountDue ? '': quote.totalAmountDue
+        deliveryAddress1: loading || !quote.deliveryAddress1 ? '' : quote.deliveryAddress1,
+        deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,
+        city: loading || !quote.city ? '' : quote.city,
+        state: loading || !quote.state ? '' : quote.state,
+        zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
+        gallonRequested: loading || !quote.gallonRequested ? '': quote.gallonRequested,
+        price: loading || !quote.price ? '': quote.price,
+        totalAmountDue: loading || !quote.totalAmountDue ? '': quote.totalAmountDue  
+         
       })
+    }
     }, [loading]);
 
     const {
@@ -44,7 +50,7 @@ const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
         city,
         state,
         zipcode,
-
+        check
     } = formData;
 
     
@@ -55,15 +61,19 @@ const handleChange=(date)=> {
   setFormData({...formData, date: date})
 }
 
-
+const handleBaconChange= e =>{
+  setFormData({...formData, check: true})
+}
 
 const onSubmit = e => {
     e.preventDefault();
-    if(!price){
+      if(check){
       askPricing(formData);
-    } else {
-      createQuote(formData);
-    }
+      window.location.reload();
+      } else {
+        createQuote(formData);
+      }
+    
     // 
     
 };
@@ -154,14 +164,17 @@ const onSubmit = e => {
           <input type="text" placeholder="*zipcode" name="zipcode" value = {zipcode} onChange={(e)=> onChange(e)} />
         </div>
         <div className="form-group">
-          <input type="text" placeholder="*Suggested price" name="price" value = {price} onChange={(e)=> onChange(e)} />
+          <input type="text" placeholder="*Suggested price" name="price" value = {price}  />
         </div>
         <div className="form-group">
-          <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue } onChange={(e)=> onChange(e)} />
+          <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue }  />
         </div>
-        
+<label className = "price-label">
+<span className = "price">Get Price</span>
+  <Toggle
+    onChange={(e)=> handleBaconChange(e)} /> 
+</label>
         <input type="submit" className="btn btn-primary my-1"  />
-        <button className="btn btn-primary my-1">Get price</button>
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
       </section>      
