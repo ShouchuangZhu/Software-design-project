@@ -49,6 +49,7 @@ router.post('/', [auth,
      let pro = 0.1;
      let flu = 0;
      
+    
      if (pricingFields.state == 'TX'){
          loc = 0.02
      } else {
@@ -71,7 +72,7 @@ router.post('/', [auth,
      } else {
         flu = 0.03;
      }
-     console.log(month[1]);
+    
 
      pricingFields.price = 1.50 + 1.50 *(loc - his + gal + pro + flu);
      pricingFields.totalAmountDue = pricingFields.price * pricingFields.gallonRequested;
