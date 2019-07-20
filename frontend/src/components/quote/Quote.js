@@ -28,7 +28,7 @@ const Quote = ({quote:{quote, loading},createQuote, getPricing, askPricing})=> {
       if(quote){
       setFormData({
         deliveryAddress1: loading || !quote.deliveryAddress1 ? '' : quote.deliveryAddress1,
-        deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,
+        deliveryAddress2: loading || !quote.deliveryAddress2 ? '' : quote.deliveryAddress2,  
         city: loading || !quote.city ? '' : quote.city,
         state: loading || !quote.state ? '' : quote.state,
         zipcode: loading || !quote.zipcode ? '' : quote.zipcode,
