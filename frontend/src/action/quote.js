@@ -38,7 +38,7 @@ export const askPricing = (formData) =>  async dispatch => {
             }
         }
         const res = await axios.post('/api/pricing', formData, config);
-
+        
         dispatch({
             type: GET_QUOTE,
             payload: res.data

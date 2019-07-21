@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator/check')
 const Pricing = require('../../models/Pricing');
-
+const Quote = require('../../models/Quote');
 
 // pricing
 router.post('/', [auth, 
@@ -43,19 +43,53 @@ router.post('/', [auth,
      if (zipcode) pricingFields.zipcode = zipcode;
      if (state) pricingFields.state = state;
      
+     let loc = 0;
+     let his = 0;
+     let gal = 0;
+     let pro = 0.1;
+     let flu = 0;
+     
+    
+     if (pricingFields.state == 'TX'){
+         loc = 0.02
+     } else {
+         loc = 0.04
+     }
+     let checkhis = await Quote.findOne({ user: req.user.id });
+     if (checkhis){
+         his = 0.01;
+     } else {
+         his = 0;
+     }
+     if (pricingFields.gallonRequested > 1000) {
+         gal = 0.02;
+     } else {
+         gal = 0.03;
+     }
+     month = pricingFields.date.split('-')
+     if (month[1] >=7 && month[1]<= 9){
+        flu = 0.04;
+     } else {
+        flu = 0.03;
+     }
+    
+
+     pricingFields.price = 1.50 + 1.50 *(loc - his + gal + pro + flu);
+     pricingFields.totalAmountDue = pricingFields.price * pricingFields.gallonRequested;
+
      try {
         let pricing = await Pricing.findOne({ user: req.user.id });
-        //Update
-        if(pricing){
         
+        //Update
+        if(pricing){   
             pricing = await Pricing.findOneAndUpdate({ user: req.user.id }, { $set: pricingFields }, { new: true});
-            
             return res.json(pricing);
         };
         
         //Create
-    
+        
         pricing = new Pricing(pricingFields);
+        
         await pricing.save();
         res.json(pricing);
  
