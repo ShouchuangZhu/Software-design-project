@@ -170,9 +170,11 @@ const onSubmit = e => {
           <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue }  />
         </div>
 <label className = "price-label">
-<span className = "price">Get Price</span>
+
+<span className = "price"><h2>Get Price</h2></span>
   <Toggle
-    onChange={(e)=> handleBaconChange(e)} /> 
+    onChange={(e)=> handleBaconChange(e)} />
+    <div><small>*Please checked for Suggested Price</small></div>
 </label>
         <input type="submit" className="btn btn-primary my-1"  />
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
