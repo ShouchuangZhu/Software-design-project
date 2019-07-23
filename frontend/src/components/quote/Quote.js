@@ -170,12 +170,7 @@ const onSubmit = e => {
           <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue }  />
         </div>
 <label className = "price-label">
-<<<<<<< HEAD
-<span className = "price">Get Price (check the box below to get quote price)</span>
-=======
-
 <span className = "price"><h2>Get Price</h2></span>
->>>>>>> 3c6a0fda312c6c51abad771f3ce641f91e355256
   <Toggle
     onChange={(e)=> handleBaconChange(e)} />
     <div><small>*Please checked for Suggested Price</small></div>
