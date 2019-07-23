@@ -3,6 +3,7 @@
   background: url('../../img/mkquote.jpg') no-repeat center center/cover;
   height: 100%;
 }
+
 .react-toggle {
   touch-action: pan-x;
 

@@ -67,7 +67,7 @@ router.post('/', [auth,
          gal = 0.03;
      }
      month = pricingFields.date.split('-')
-     if (month[1] >=7 && month[1]<= 9){
+     if (month[1] >=6 && month[1]<= 8){
         flu = 0.04;
      } else {
         flu = 0.03;

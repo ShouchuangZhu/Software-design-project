@@ -81,7 +81,7 @@ const onSubmit = e => {
     
     return (
         <Fragment>
-          <section className="quote">
+          <section className = "quote">
     <h1 className="large text-primary">
         Making a quote
       </h1>
@@ -170,7 +170,7 @@ const onSubmit = e => {
           <input type="text" placeholder="*Total Amount Due" name="totalAmountDue" value = {totalAmountDue }  />
         </div>
 <label className = "price-label">
-<span className = "price">Get Price</span>
+<span className = "price">Get Price (check the box below to get quote price)</span>
   <Toggle
     onChange={(e)=> handleBaconChange(e)} /> 
 </label>
