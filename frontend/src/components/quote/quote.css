@@ -1,7 +1,8 @@
 .quote {
   position: relative;
-  background: url('../../img/mkquote.jpg') no-repeat center center/cover;
+  background: url('../../img/mkquote1.jpg') no-repeat center center/cover;
   height: 100%;
+  width: auto;
 }
 
 .react-toggle {
@@ -148,12 +149,16 @@
 }
 .price {
   display: block;
-  color: aqua;
+  color: #1251FE;
   margin-right: 10px;
   margin-bottom: 10px;
-  
+
 }
 .price-label {
   display: block;
   margin-left: 10px;
+}
+
+.price-sameline {
+  display:inline-block;
 }
