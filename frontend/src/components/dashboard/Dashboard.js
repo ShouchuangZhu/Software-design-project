@@ -16,6 +16,7 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
 
     return loading && profile === null ? <Spinner /> : <Fragment>
         <section class='dashb'>
+            <div className="dashb-inner">
         <h1 className = "large text-primary">Dashboard</h1>
         <p className = "lead">
             <i className = "fas fa-user"></i>Welcome {user && user.name}
@@ -28,6 +29,7 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
                 Create Profile
             </Link>
         </Fragment>}
+        </div>
         </section>
     </Fragment>;
 }
