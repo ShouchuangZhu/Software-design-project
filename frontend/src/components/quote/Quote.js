@@ -82,13 +82,14 @@ const onSubmit = e => {
     return (
         <Fragment>
           <section className = "quote">
+            <div className="quote-inner">
     <h1 className="large text-primary">
         Making a quote
       </h1>
       <p className="lead">
         <i className="fas fa-user"></i> Please fill in info!
       </p>
-      <font color="red"> * </font><small>= required field</small>
+      <small>* = required field</small>
       <form className="form" onSubmit = {e=> onSubmit(e)}>
         <div className="form-group">
           <input type="text" placeholder="*Gallon Requested" name="gallonRequested" value = {gallonRequested} onChange={(e)=> onChange(e)}/>
@@ -178,6 +179,7 @@ const onSubmit = e => {
         <input type="submit" className="btn btn-primary my-1"  />
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
+      </div>
       </section>      
     </Fragment>
     )
