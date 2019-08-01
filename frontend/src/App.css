@@ -578,5 +578,8 @@
     }
   }
 
-
+  .Logo {
+    background-image: url(./img/fq_logo_350.png);
+    align-items: center;
+  }
  

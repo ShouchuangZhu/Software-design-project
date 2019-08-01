@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import logo from '../../img/fq_logo_350.png';
 
 
 const Landing = ({ isAuthenticated }) => {
@@ -12,7 +13,7 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Fuel Quote</h1>
+          <div><img  src={logo} className="App-logo" alt="Logo"/></div>
           <p className="lead">
             Getting the lastest and most competitive fuel quote
           </p>
