@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../action/alert';
 import { register } from '../../action/auth';
 import PropTypes from 'prop-types';
+import './register.css'
 
 const Register = ({setAlert, register, isAuthenticated}) => {
     const [formData, setFormData] = useState({
@@ -31,6 +32,9 @@ if(isAuthenticated){
     const { name, email, password, password2} = formData;
     return (
         <Fragment>
+            <section className="bg-register">
+            <section className="register">
+            <div className="register-inner">
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit = {e => onSubmit(e)}>
@@ -61,8 +65,11 @@ if(isAuthenticated){
                 <input type="submit" className="btn btn-primary" value="Sign Up" />
             </form>
             <p className="my-1">
-                Already have an account? <Link to='/login'>Login</Link>
+            Already have an account? <Link to='/login'>Login</Link>
             </p>
+            </div>
+            </section>
+            </section>
         </Fragment>
     )
 }

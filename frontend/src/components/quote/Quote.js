@@ -78,9 +78,9 @@ const onSubmit = e => {
     
 };
 
-    
     return (
         <Fragment>
+          <section className="bg-quote">
           <section className = "quote">
             <div className="quote-inner">
     <h1 className="large text-primary">
@@ -180,6 +180,7 @@ const onSubmit = e => {
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
       </div>
+      </section>
       </section>      
     </Fragment>
     )
