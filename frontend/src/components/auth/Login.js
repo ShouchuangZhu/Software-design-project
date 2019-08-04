@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../action/auth';
+import './login.css'
+import logo from '../../img/fq_logo.png';
 
 const Login = ( { login, isAuthenticated}) => {
     const [formData, setFormData] = useState({ 
@@ -24,7 +26,9 @@ if(isAuthenticated) {
     const { email, password} = formData;
     return (
         <Fragment>
-            <h1 className="large text-primary">Login</h1>
+            <section className="bg-login">
+            <section className="login">
+            <div><img  src={logo} className="App-logo" alt="Logo"/></div>
             <p className="lead"><i className="fas fa-user"></i> Login</p>
             <form className="form" onSubmit = {e => onSubmit(e)}>
                 <div className="form-group">
@@ -44,6 +48,8 @@ if(isAuthenticated) {
             <p className="my-1">
                 Don't have an account? <Link to='/register'>Sign Up</Link>
             </p>
+            </section>
+            </section>
         </Fragment>
     )
 }

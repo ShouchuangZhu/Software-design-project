@@ -1,18 +1,18 @@
-.profilecss {
+.login {
   border-style: double;
   border: 2px solid #17a2b8;
   border-radius: 50px;
-  background-color: rgb(240, 248, 255, 0.6);
+  background-color: rgb(240, 248, 255, 0.8);
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 650px;
+  height: 550px;
   width: 600px;
 }
 
-.profilecss-inner {
+.login-inner {
   color:black;
   height: 100%;
   width: 80%;
@@ -24,9 +24,9 @@
   text-align: center;
 }
 
-.bg-profile{
+.bg-login{
   position: relative;
-  background: url('../../img/profilebg.jpg') no-repeat center center/cover;
+  background: url('../../img/login_bg.jpg') no-repeat center center/cover;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -34,4 +34,9 @@
   justify-content: center;
   height: 700px;
   width: 100%;
+}
+
+.Logo {
+  background-image: url(../../img/fq_logo.png);
+  align-items: center;
 }

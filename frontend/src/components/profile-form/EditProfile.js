@@ -45,6 +45,7 @@ const onSubmit = e => {
 
     return (
         <Fragment>
+          <section className="bg-profile">
     <section className="profilecss">
     <div className="profilecss-inner">
     <h1 class="large text-primary">
@@ -131,7 +132,8 @@ const onSubmit = e => {
         <Link className="btn btn-light my-1" to='/dashboard'>Go Back</Link>
       </form>
       </div>
-      </section>      
+      </section>
+      </section>    
     </Fragment>
     )
 }
