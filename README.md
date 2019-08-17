@@ -11,14 +11,14 @@ npm i bootstrap reactstrap uuid react-transition-group <br/>
 npm i axios react-router-dom react-redux redux-thunk redux-devtools-extension <br/>
 npm i moment react-moment favicon date-picker react-table react-toggle<br/>
 
-![Test Image 1]()
+![Landing](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/landing.png)
 
-![Test Image 2]()
+![SignUp](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/signup.png)
 
-![Test Image 3]()
+![Profile](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/profile.png)
 
-![Test Image 4]()
+![Dashboard](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/dashboard.png)
 
-![Test Image 5]()
+![Quote](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/quote.png)
 
-![Test Image 6]()
+![History](https://github.com/ShouchuangZhu/Software-design-project/blob/master/displayImage/history.png)
